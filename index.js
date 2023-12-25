@@ -115,13 +115,20 @@ try {
 
     const result = await taskCollection.insertOne(jobDocument);
     res.send(result);
-    
+
 } catch (error) {
     console.error("Error:", error);
     res.status(500).send("Internal Server Error");
 }
 });
+// delete 
 
+app.delete('/tasks/:id' , async(req , res ) =>{
+  const id =req.params.id ;
+  const query = {_id : new ObjectId (id)}
+  const result = await jobCollection.deleteOne(query);
+  res.send(result);
+})
   run().catch(console.dir);
 app.get('/', (req, res) => {
     res.send('sccTechnovision ')
