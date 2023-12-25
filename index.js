@@ -5,7 +5,12 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 4200
 // midelwire
-app.use(cors());
+app.use(cors(
+  {
+    origin: ['https://scctechnovision-d2e4c.web.app'],
+    credentials:true
+  }
+));
 app.use(express.json());
 
 // mongodb connections 
